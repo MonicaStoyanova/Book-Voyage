@@ -5,6 +5,7 @@ import About from "./components/About/About";
 import Catalog from "./components/Catalog/Catalog";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import Details from "./components/Details/Details";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/books/:id" element={<Details />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
