@@ -27,13 +27,10 @@ const Catalog = () => {
   }, []);
 
   return (
-    <div className={styles.bookList}>
+    <section className={styles.bookList}>
       {books.map((book) => {
         return (
           <div key={book.id} className={styles.book}>
-            <div>
-              <h4>{book.title}</h4>
-            </div>
             <div>
               <img
                 src={book.image_url}
@@ -63,7 +60,7 @@ const Catalog = () => {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 };
 

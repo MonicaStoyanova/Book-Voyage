@@ -8,14 +8,29 @@
 }
 h2 {
   font-size: 50px;
+  margin: 16px;
+  text-align: center;
 }
 h3 {
   padding-top: 2vh;
 }
+
+.bookDetails p,
+h3 {
+  margin: 5px 0px;
+}
+
+.bookImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: auto;
+}
+
 .bookDescription {
   max-width: 800px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
   line-height: 1.6;
 }

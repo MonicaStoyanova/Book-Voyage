@@ -5,6 +5,7 @@
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   text-align: center;
+  margin-top: 50px;
 }
 
 img {
@@ -15,6 +16,7 @@ img {
 
 img:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 .book {
   text-align: center;

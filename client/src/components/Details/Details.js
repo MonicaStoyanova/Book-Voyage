@@ -28,9 +28,10 @@ const Details = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="book-image">
+      <div className={styles.bookImage}>
         <h2>{book?.title}</h2> <img src={book?.image_url} alt="book cover" />
       </div>
+
       <div className={styles.bookDescription}>
         <h3>Authors</h3>
         <p>{book?.authors}</p>

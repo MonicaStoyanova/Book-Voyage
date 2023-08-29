@@ -9,18 +9,26 @@ const Navbar = () => {
         Sailing Through Stories...
       </Link>
       <ul className={styles.ul}>
-        <Link to="/about">
-          <h3>About</h3>
-        </Link>
-        <Link to="/login">
-          <h3>Login</h3>
-        </Link>
-        <Link to="/register">
-          <h3>Register</h3>
-        </Link>
-        <Link to="/catalog">
-          <h3>Catalog</h3>
-        </Link>
+        <li>
+          <Link to="/about">
+            <h3>About</h3>
+          </Link>
+        </li>
+        <li>
+          <Link to="/login">
+            <h3>Login</h3>
+          </Link>
+        </li>
+        <li>
+          <Link to="/register">
+            <h3>Register</h3>
+          </Link>
+        </li>
+        <li>
+          <Link to="/catalog">
+            <h3>Catalog</h3>
+          </Link>
+        </li>
       </ul>
     </nav>
   );
