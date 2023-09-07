@@ -33,6 +33,7 @@ const Catalog = () => {
           <div key={book.id} className={styles.book}>
             <div>
               <img
+                className={styles.bookCoverImg}
                 src={book.image_url}
                 alt="book cover"
                 onClick={() => navigate(`/books/${book.id}`)}
@@ -40,12 +41,18 @@ const Catalog = () => {
             </div>
             <div>
               {favoritesChecker(book.id) ? (
-                <button onClick={() => removeFromFavorites(book.id)}>
+                <button
+                  className={styles.removeFavorite}
+                  onClick={() => removeFromFavorites(book.id)}
+                >
                   Remove from favorites
                 </button>
               ) : (
                 <div>
-                  <button onClick={() => addToFavorites(book)}>
+                  <button
+                    className={styles.toFavorites}
+                    onClick={() => addToFavorites(book)}
+                  >
                     Add to favorites
                   </button>
                   <button
