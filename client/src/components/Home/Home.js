@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import background from "../../images/home.jpg";
+
 import { QUOTES_URL } from "../../Api";
+import background from "../../images/home.jpg";
+
 import styles from "./Home.module.css";
 
 const Home = () => {

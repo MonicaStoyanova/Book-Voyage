@@ -1,7 +1,16 @@
+:root {
+  --color-login: rgb(240, 185, 157);
+  --color-register: rgb(134, 163, 158);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+}
+
+main {
+  position: relative;
 }

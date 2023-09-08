@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { BOOKS_URL } from "../../Api";
-import { useAppContext } from "../../context/appContext";
 import { useNavigate } from "react-router";
 
+import { BOOKS_URL } from "../../Api";
+
 import styles from "./Catalog.module.css";
+import { useAuthContext } from "../../context/authContext";
+import CatalogActions from "./CatalogActions";
 
 const Catalog = () => {
   const [books, setBooks] = useState([]);
 
-  const { favorites, addToFavorites, removeFromFavorites } = useAppContext();
+  const userValue = useAuthContext();
 
   const navigate = useNavigate();
-  const favoritesChecker = (id) => {
-    const boolean = favorites.some((book) => book.id === id);
-    return boolean;
-  };
 
   useEffect(() => {
     fetch(BOOKS_URL)
@@ -39,31 +37,7 @@ const Catalog = () => {
                 onClick={() => navigate(`/books/${book.id}`)}
               />
             </div>
-            <div>
-              {favoritesChecker(book.id) ? (
-                <button
-                  className={styles.removeFavorite}
-                  onClick={() => removeFromFavorites(book.id)}
-                >
-                  Remove from favorites
-                </button>
-              ) : (
-                <div>
-                  <button
-                    className={styles.toFavorites}
-                    onClick={() => addToFavorites(book)}
-                  >
-                    Add to favorites
-                  </button>
-                  <button
-                    className={styles.toRead}
-                    onClick={() => addToRead(book.title)}
-                  >
-                    Add to read
-                  </button>
-                </div>
-              )}
-            </div>
+            <div>{userValue.currentUser && <CatalogActions book={book} />}</div>
           </div>
         );
       })}

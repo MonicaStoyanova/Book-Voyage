@@ -12,7 +12,7 @@ const About = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <article>
+      <article className={styles.article}>
         <h1>Embark on a Literary Odyssey with Book Voyage</h1>
         <p>
           Welcome to Book Voyage, where words come alive and stories take you on

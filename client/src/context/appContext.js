@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 const AppContext = createContext(null);
 
@@ -18,19 +19,25 @@ const AppContextProvider = ({ children }) => {
   const addToFavorites = (book) => {
     const oldFavorites = [...favorites];
     const newFavorites = oldFavorites.concat(book);
-
     setFavorites(newFavorites);
   };
 
   const removeFromFavorites = (id) => {
     const oldFavorites = [...favorites];
     const newFavorites = oldFavorites.filter((book) => book.id !== id);
-
     setFavorites(newFavorites);
   };
+
   const addToRead = (title) => {
     const oldToRead = [...toRead];
-    const updatedToRead = [...oldToRead.push(title)];
+
+    if (oldToRead.indexOf(title) !== -1) {
+      return toast.error(`${title} is already in the list`);
+    }
+
+    const updatedToRead = [...oldToRead, title];
+
+    toast.success(`${title} added to the list`);
     setToRead(updatedToRead);
   };
 
@@ -40,8 +47,9 @@ const AppContextProvider = ({ children }) => {
         favorites,
         addToFavorites,
         removeFromFavorites,
-        toRead,
         addToRead,
+        toRead,
+        setToRead,
       }}
     >
       {children}

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+
 import { BOOKS_URL } from "../../Api";
-import styles from "./Details.module.css";
 import details from "../../images/details.jpg";
+
+import styles from "./Details.module.css";
 
 const Details = () => {
   const [book, setBook] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${BOOKS_URL}/${id - 1}`)
+    fetch(`${BOOKS_URL}/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setBook(data);
@@ -29,18 +31,19 @@ const Details = () => {
       }}
     >
       <div className={styles.bookImage}>
-        <h2>{book?.title}</h2> <img src={book?.image_url} alt="book cover" />
+        <h2 className={styles.bookTitle}>{book?.title}</h2>{" "}
+        <img src={book?.image_url} alt="book cover" />
       </div>
 
       <div className={styles.bookDescription}>
-        <h3>Authors</h3>
-        <p>{book?.authors}</p>
-        <h3>Genres</h3>
-        <p>{book?.genres}</p>
-        <h3>Pages</h3>
-        <p>{book?.num_pages}</p>
-        <h3>Description</h3>
-        <p>{book?.description}</p>
+        <h3 className={styles.detailsTitle}>Authors</h3>
+        <p className={styles.detailsParagraph}>{book?.authors}</p>
+        <h3 className={styles.detailsTitle}>Genres</h3>
+        <p className={styles.detailsParagraph}>{book?.genres}</p>
+        <h3 className={styles.detailsTitle}>Pages</h3>
+        <p className={styles.detailsParagraph}>{book?.num_pages}</p>
+        <h3 className={styles.detailsTitle}>Description</h3>
+        <p className={styles.detailsParagraph}>{book?.description}</p>
       </div>
     </div>
   );
