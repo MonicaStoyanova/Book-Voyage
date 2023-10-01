@@ -7,12 +7,12 @@
   line-height: 1.6;
 }
 
-.article p {
-  font-size: 20px;
-}
-
 .article h1 {
   padding-top: 2vh;
   margin-left: 5em;
   margin-right: 5em;
+}
+
+.article p {
+  font-size: 20px;
 }

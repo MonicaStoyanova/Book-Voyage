@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bad+Script&family=Courgette&family=Great+Vibes&family=Montserrat:ital,wght@0,400;1,400;1,500&family=Open+Sans&family=Raleway:wght@100&display=swap");
+
 .bookDetails {
   min-height: 80vh;
   width: 100%;
@@ -7,6 +9,7 @@
   padding: 10px;
 }
 .bookTitle {
+  font-family: "Bad Script", "Courgette", "Great Vibes", "Montserrat", "cursive";
   font-size: 50px;
   margin: 16px;
   text-align: center;
@@ -18,6 +21,7 @@
 }
 .detailsParagraph {
   font-size: 15px;
+  /*  overflow: scroll; test it with book the secret garden*/
 }
 
 .bookDetails p,

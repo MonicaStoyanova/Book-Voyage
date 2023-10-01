@@ -37,7 +37,7 @@ const Home = () => {
     >
       {quote && (
         <p className={styles.quote}>
-          {quote?.text} <br></br> -{quote?.author}
+          <q>{quote?.text}</q> <br></br> &mdash; {quote?.author}
         </p>
       )}
     </div>

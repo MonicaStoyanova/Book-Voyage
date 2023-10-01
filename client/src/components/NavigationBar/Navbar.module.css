@@ -1,7 +1,7 @@
-.container {
+/*.container {
   margin: 1rem;
   text-align: center;
-}
+}*/
 
 .navbar {
   background-color: black;
@@ -19,7 +19,7 @@
   margin-top: 10px;
 }
 
-.navbar ul {
+.ul {
   padding: 0;
   margin: 0;
   list-style: none;
