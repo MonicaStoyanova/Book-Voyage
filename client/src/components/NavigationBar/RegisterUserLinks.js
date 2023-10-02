@@ -22,7 +22,7 @@ const RegisterUserLinks = () => {
         </Link>
       </li>
       <li>
-        <Link to="/#">
+        <Link to="/logout">
           <h3>Logout</h3>
         </Link>
       </li>

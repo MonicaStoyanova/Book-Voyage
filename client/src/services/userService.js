@@ -46,3 +46,10 @@ export const login = async (email, password) => {
 
   return result;
 };
+
+export const logout = async () => {
+  const response = await fetch(`${baseUrl}/logout`);
+};
+export function clearUserData() {
+  sessionStorage.removeItem("userData");
+}

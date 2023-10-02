@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { clearUserData } from "../services/userService";
 
 export const AuthContenxt = createContext(null);
 
@@ -20,8 +21,13 @@ export const AuthContextProvider = ({ children }) => {
     setCurrentUser(userData);
   };
 
+  const userLogout = (userData) => {
+    setCurrentUser({});
+    clearUserData();
+  };
+
   return (
-    <AuthContenxt.Provider value={{ currentUser, userLogin }}>
+    <AuthContenxt.Provider value={{ currentUser, userLogin, userLogout }}>
       {children}
     </AuthContenxt.Provider>
   );
