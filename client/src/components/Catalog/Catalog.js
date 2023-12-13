@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import { BOOKS_URL } from "../../Api";
+import { BOOKS_URL } from "../../utils/Api";
 
 import styles from "./Catalog.module.css";
 import { useAuthContext } from "../../context/authContext";

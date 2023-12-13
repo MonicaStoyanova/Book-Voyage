@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import { BOOKS_URL } from "../../Api";
+import { BOOKS_URL } from "../../utils/Api";
 import details from "../../images/details.jpg";
 
 import styles from "./Details.module.css";

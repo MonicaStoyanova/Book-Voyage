@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { QUOTES_URL } from "../../Api";
+import { QUOTES_URL } from "../../utils/Api";
 import background from "../../images/home.jpg";
 
 import styles from "./Home.module.css";

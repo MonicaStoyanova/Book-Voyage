@@ -4,9 +4,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-import AppContextProvider from "./context/appContext";
-import { AuthContextProvider } from "./context/authContext";
-
 import Navbar from "./components/NavigationBar/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
@@ -22,23 +19,19 @@ import { Logout } from "./components/Logout/Logout";
 function App() {
   return (
     <main>
-      <AuthContextProvider>
-        <AppContextProvider>
-          <ToastContainer hideProgressBar={true} />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/catalog" element={<Catalog />} />
-            <Route path="/mylists" element={<MyLists />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/books/:id" element={<Details />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/logout" element={<Logout />} />
-          </Routes>
-          <Footer />
-        </AppContextProvider>
-      </AuthContextProvider>
+      <ToastContainer hideProgressBar={true} />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/mylists" element={<MyLists />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/books/:id" element={<Details />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
+      </Routes>
+      <Footer />
     </main>
   );
 }
