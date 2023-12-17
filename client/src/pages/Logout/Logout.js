@@ -1,15 +1,27 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { logout, clearUser } from "../../path-to-your-slice"; // Adjust the import path
 
-import { AuthContenxt } from "../../context/authContext";
-
-export const Logout = () => {
-  const { userLogout } = useContext(AuthContenxt);
+const Logout = () => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    userLogout();
-  }, [userLogout]);
+    const performLogout = async () => {
+      try {
+        await dispatch(logout());
+        dispatch(clearUser());
+      } catch (error) {
+        console.error("Logout error:", error);
+      }
+    };
+
+    performLogout();
+  }, []);
+
   localStorage.clear();
 
-  return <Navigate to="/" />; 
+  return <Navigate to="/" />;
 };
+
+export default Logout;

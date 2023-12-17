@@ -1,3 +1,12 @@
+.homeBackground {
+  background-image: url(../../images/home.jpg);
+  background-size: cover;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
 .quote {
   display: block;
   color: rgb(95, 175, 209);

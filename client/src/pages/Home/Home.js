@@ -1,41 +1,24 @@
-import { useEffect, useState } from "react";
-
-import { QUOTES_URL } from "../../Api";
-import background from "../../images/home.jpg";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuotes } from "../../store/Slices/bookSlice";
 
 import styles from "./Home.module.css";
 
 const Home = () => {
-  const [quotes, setQuotes] = useState([]);
-
-  // transfer to the slice
+  const dispatch = useDispatch();
+  const quotes = useSelector((state) => state.booksSlice.quotes);
   useEffect(() => {
-    fetch(QUOTES_URL)
-      .then((response) => response.json())
-      .then((data) => {
-        setQuotes(data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    dispatch(getQuotes());
   }, []);
 
   const randomQuoteIndex = Math.floor(
-    Math.random() * Object.keys(quotes).length
+    Math.random() * (quotes ? quotes.length : 0)
   );
-  const quote = quotes[randomQuoteIndex];
+  const quote = quotes ? quotes[randomQuoteIndex] : null;
+
   //revise the return statement, CSS should be separated
   return (
-    <div
-      className="home-background"
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: "cover",
-        height: "100vh",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <div className={styles.homeBackground}>
       {quote && (
         <p className={styles.quote}>
           <q>{quote?.text}</q> <br></br> &mdash; {quote?.author}

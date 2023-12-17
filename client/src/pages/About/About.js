@@ -1,17 +1,8 @@
-import about from "../../images/about.jpg";
 import styles from "./About.module.css";
 
 const About = () => {
   return (
-    <div
-      className="about-background"
-      style={{
-        backgroundImage: `url(${about})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <div className={styles.aboutBackground}>
       <article className={styles.article}>
         <h1>Embark on a Literary Odyssey with Book Voyage</h1>
         <p>

@@ -1,23 +1,24 @@
 import React from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToFavorites,
+  addToRead,
+  removeFromFavorites,
+} from "../../store/Slices/bookSlice";
 import styles from "./Catalog.module.css";
 
-import { useAppContext } from "../../context/appContext";
-
 const CatalogActions = ({ book }) => {
-  const value = useAppContext();
-
-  const { addToRead, addToFavorites, favorites, removeFromFavorites } = value;
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.booksSlice.favorites);
 
   const favoritesChecker = (id) => {
-    const boolean = favorites.some((book) => book.id === id);
-    return boolean;
+    return favorites.some((book) => book.id === id);
   };
 
   return favoritesChecker(book.id) ? (
     <button
       className={styles.removeFavorite}
-      onClick={() => removeFromFavorites(book.id)}
+      onClick={() => dispatch(removeFromFavorites(book.id))}
     >
       Remove from favorites
     </button>
@@ -25,11 +26,14 @@ const CatalogActions = ({ book }) => {
     <div>
       <button
         className={styles.toFavorites}
-        onClick={() => addToFavorites(book)}
+        onClick={() => dispatch(addToFavorites(book))}
       >
         Add to favorites
       </button>
-      <button className={styles.toRead} onClick={() => addToRead(book.title)}>
+      <button
+        className={styles.toRead}
+        onClick={() => dispatch(addToRead(book.title))}
+      >
         Add to read
       </button>
     </div>

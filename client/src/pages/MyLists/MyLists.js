@@ -1,13 +1,22 @@
-import { useState } from "react";
-import { useAppContext } from "../../../context/appContext";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeFromFavorites,
+  removeFromReadList,
+} from "../../../store/Slices/bookSlice";
 
 import styles from "./MyLists.module.css";
-// не ми запазва кой съм сложила в листите след рефреш
+
 const MyLists = () => {
-  const value = useAppContext();
-  const { favorites, toRead, removeFromReadList } = value;
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.booksVoyage.favorites);
+  const toRead = useSelector((state) => state.booksVoyage.toRead);
 
   const [readItems, setReadItems] = useState([]);
+
+  useEffect(() => {
+    setReadItems([]);
+  }, [favorites, toRead]);
 
   const toggleReadStatus = (item) => {
     if (readItems.includes(item)) {
@@ -18,7 +27,14 @@ const MyLists = () => {
   };
 
   const removeCheckedItems = () => {
-    readItems.map((item) => removeFromReadList(item));
+    readItems.forEach((item) => {
+      if (favorites.some((book) => book.title === item)) {
+        dispatch(removeFromFavorites(item.id));
+      } else if (toRead.includes(item)) {
+        dispatch(removeFromReadList(item));
+      }
+    });
+    setReadItems([]);
   };
 
   return (
@@ -26,16 +42,16 @@ const MyLists = () => {
       <div className={styles.favorites}>
         <h3>My all-time favorites</h3>
         <ul className="favorites-list">
-          {favorites.map((item, index) => (
-            <li key={index}>{item.title}</li>
+          {favorites.map((item) => (
+            <li key={item.id}>{item.title}</li>
           ))}
         </ul>
-      </div>{" "}
+      </div>
       <div className={styles.toRead}>
         <h3>Books I wish to read</h3>
         <ul className="toRead-list">
-          {toRead.map((item, index) => (
-            <li key={index}>
+          {toRead.map((item) => (
+            <li key={item}>
               <label>
                 <input
                   type="checkbox"
