@@ -8,7 +8,7 @@ const baseUrl = "http://localhost:3030/users";
 export const getAll = createAsyncThunk("users/fetchUsers", async () => {
   try {
     const response = await axios.get(baseUrl);
-    const result = await response.json(); // Corrected line
+    const result = await response.json();
     return result.users;
   } catch (error) {
     throw error;
@@ -20,7 +20,7 @@ export const getOne = createAsyncThunk(
   async ({ userId }, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${baseUrl}/${userId}`);
-      const result = await response.data; // Await the response.data
+      const result = await response.data;
       return result.user;
     } catch (error) {
       return rejectWithValue({ message: "Error fetching user", error });
@@ -128,7 +128,7 @@ const booksSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.loading = false;
-        state.user = null; // Reset user state after logout
+        state.user = null;
       })
       .addCase(logout.rejected, (state, action) => {
         state.loading = false;
