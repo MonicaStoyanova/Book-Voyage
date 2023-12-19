@@ -5,16 +5,16 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 import Navbar from "./components/NavigationBar/Navbar";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Catalog from "./components/Catalog/Catalog";
-import Login from "./components/Login/Login";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Catalog from "./pages/Catalog/Catalog";
+import Login from "./pages/Login/Login";
 import Register from "./components/Register/Register";
 
-import Details from "./components/Details/Details";
-import MyLists from "./components/MyLists/MyLists";
+import Details from "./pages/Details/Details";
+import MyLists from "./pages/MyLists/MyLists";
 import Footer from "./components/Footer/Footer";
-import { Logout } from "./components/Logout/Logout";
+import Logout from "./pages/Logout/Logout";
 
 function App() {
   return (
